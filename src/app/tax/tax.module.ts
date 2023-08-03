@@ -6,13 +6,15 @@ import { TaxFormComponent } from './tax-form/tax-form.component';
 import { TaxHistoryComponent } from './tax-history/tax-history.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StatusPipePipe } from './pipes/status-pipe.pipe';
+import { SingleTaxComponent } from './single-tax/single-tax.component';
 
 
 @NgModule({
   declarations: [
     TaxFormComponent,
     TaxHistoryComponent,
-    StatusPipePipe
+    StatusPipePipe,
+    SingleTaxComponent
   ],
   imports: [
     CommonModule,

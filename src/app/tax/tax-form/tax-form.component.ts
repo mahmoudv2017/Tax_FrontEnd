@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TaxService } from '../tax.service';
 import { AdminService } from './../../admin/admin.service';
+import  Swal  from 'sweetalert2';
 
 @Component({
   selector: 'app-tax-form',
@@ -44,11 +45,18 @@ export class TaxFormComponent implements OnInit {
     var todayDate = new Date()
     if(+yeamonth[0] <= todayDate.getFullYear() && +yeamonth[1] <=  todayDate.getMonth() + 1){
 
-      this.form.get("forMonth")?.setValue(month)
-      this.hidden_flag = false
-      this.statusMsg = ""
+      this.taxService.CheckMonth(+yeamonth[1]).subscribe((res) => {
+        if(!res){
+
+          this.form.get("forMonth")?.setValue(month)
+          this.hidden_flag = false
+        }else{
+          Swal.fire("Error" , "You Have Already Entered Your Tax For This Month" , "info")
+
+        }
+      })
     }else{
-      this.statusMsg = "Wrong Date Has Been Entered"
+      Swal.fire("Error" , "Wrong Date Has Been Entered" , "error")
     }
   }
   onSubmit(){

@@ -6,15 +6,15 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable, take } from 'rxjs';
-import { AccountService } from 'src/app/account/account.service';
+
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
-  token:string | null = localStorage.getItem("token") || null
-  constructor(private accountService:AccountService) {}
+  token!:string | null ;
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    this.token = localStorage.getItem("token") || null
 
 
     if(this.token){

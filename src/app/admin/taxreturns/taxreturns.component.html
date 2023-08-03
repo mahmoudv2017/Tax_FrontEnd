@@ -1,6 +1,9 @@
 
-<input type="text" #ssninput name="" >
-<button (click)="getUserData(ssninput.value)" class="btn btn-primary" >Search SSN</button>
+<div style="text-align: center;">
+
+  <input  class="form-control" placeholder="Social Security Number" type="text" #ssninput name="" style="margin-right: 2vw; display: inline-block; width: 200px;" >
+  <button  (click)="getUserData(ssninput.value)" class="btn btn-secondary" >Search SSN</button>
+</div>
 <p>{{status_msg}}</p>
 <div *ngIf="target_user " class="container">
   <div class="row">
@@ -44,10 +47,14 @@
             <td>{{record.totalTax | currency}}</td>
             <td>{{record.taxWithheld | currency}}</td>
             <td [ngClass]="record.status == 0 ? 'alert alert-danger': 'alert alert-primary' " >
-
-              <select  (change)="ChangeStatus(record.id,$event)">
-                <option *ngFor="let status of StatusData" [selected]="+status.value == record.status" value="status.value"> {{status.display}} </option>
-              </select>
+              <ng-container *ngIf="record.status == 0; else elsetempalte">
+                <select  (change)="ChangeStatus(record.id,$event)">
+                  <option *ngFor="let status of StatusData" [selected]="+status.value == record.status" value="status.value"> {{status.display}} </option>
+                </select>
+              </ng-container>
+              <ng-template #elsetempalte>
+                {{record.status | statusPipe}}
+              </ng-template>
             </td>
 
           </tr>

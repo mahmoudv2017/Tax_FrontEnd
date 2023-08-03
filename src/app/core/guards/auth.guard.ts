@@ -16,15 +16,19 @@ export class AuthGuard implements CanActivate {
       return  this.accountService.currentUser$.pipe(map(res => {
 
 
-          if(route.url[0].path == "account" && res != null
+
+          if(route.url[0].path != "account" && res == null
           ||
           res?.role == "TaxPayer" && route.url[0].path == "admin"
+
       //    ||
          // res?.role == "Admin" && route.url[0].path != "admin"
           ){
             this.router.navigate(["/"])
             return false
           }
+
+
 
           return true
       }))

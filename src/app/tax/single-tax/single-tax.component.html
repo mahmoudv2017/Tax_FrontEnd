@@ -1,0 +1,39 @@
+<div class="row resume-timeline">
+
+  <div class="col-twelve resume-header">
+
+    <h2>Tax History</h2>
+
+  </div>
+
+  <div *ngIf="taxHistory" class="col-twelve">
+
+    <div class="timeline-wrap text-center">
+
+      <div *ngFor="let history of taxHistory" class="timeline-block">
+
+        <div  [style.background-color]="StatusData[history.status].color" class="timeline-ico">
+
+        </div>
+
+        <div class="timeline-header">
+          <h3>{{history.status | statusPipe}}</h3>
+          <p>{{history.timestamp | date}}</p>
+        </div>
+
+        <div style="height: 25vh;" class="timeline-content">
+          <br />
+          <br />
+          <br />
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div> <!-- /resume-timeline -->

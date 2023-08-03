@@ -18,7 +18,7 @@ export class LoginComponent {
   }
 
   onsubmit(){
-    debugger
+
     this.accountService.loginUser(this.form.value)
   }
 
