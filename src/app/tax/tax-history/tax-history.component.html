@@ -1,0 +1,28 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">income</th>
+      <th scope="col">filingDate</th>
+      <th scope="col">adjustedGrossIncome</th>
+      <th scope="col">taxableIncome</th>
+      <th scope="col">totalTax</th>
+      <th scope="col">taxWithheld</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let record of taxReturns">
+      <td>{{record.id}}</td>
+      <td>{{record.income | currency}}</td>
+      <td>{{record.filingDate | date}}</td>
+      <td>{{record.adjustedGrossIncome | currency}}</td>
+      <td>{{record.taxableIncome | currency}}</td>
+      <td>{{record.totalTax | currency}}</td>
+      <td>{{record.taxWithheld | currency}}</td>
+      <td [ngClass]="record.status == 0 ? 'alert alert-danger': 'alert alert-primary' " >{{record.status | statusPipe}}</td>
+
+    </tr>
+
+  </tbody>
+</table>

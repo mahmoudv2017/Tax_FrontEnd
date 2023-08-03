@@ -1,0 +1,8 @@
+.input-group-prepend{
+  width: 10vw;
+  margin-right: 4vw;
+}
+
+.isInValid{
+  border-color: red;
+}

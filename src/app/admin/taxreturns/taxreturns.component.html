@@ -1,0 +1,59 @@
+
+<input type="text" #ssninput name="" >
+<button (click)="getUserData(ssninput.value)" class="btn btn-primary" >Search SSN</button>
+<p>{{status_msg}}</p>
+<div *ngIf="target_user " class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <p>userID :</p>
+      <p>userName :</p>
+      <p>email :</p>
+      <p>phoneNumber :</p>
+    </div>
+    <div class="col-lg-7">
+      <p>{{target_user.userId}}</p>
+      <p>{{target_user.userName}}</p>
+      <p>{{target_user.email}}</p>
+      <p>{{target_user.phoneNumber}}</p>
+
+
+
+    </div>
+
+    <div class="col-lg-12" *ngIf="target_user.taxReturnDtoReponses.length > 0">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">income</th>
+            <th scope="col">filingDate</th>
+            <th scope="col">adjustedGrossIncome</th>
+            <th scope="col">taxableIncome</th>
+            <th scope="col">totalTax</th>
+            <th scope="col">taxWithheld</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of target_user.taxReturnDtoReponses">
+            <td>{{record.id}}</td>
+            <td>{{record.income | currency}}</td>
+            <td>{{record.filingDate | date}}</td>
+            <td>{{record.adjustedGrossIncome | currency}}</td>
+            <td>{{record.taxableIncome | currency}}</td>
+            <td>{{record.totalTax | currency}}</td>
+            <td>{{record.taxWithheld | currency}}</td>
+            <td [ngClass]="record.status == 0 ? 'alert alert-danger': 'alert alert-primary' " >
+
+              <select  (change)="ChangeStatus(record.id,$event)">
+                <option *ngFor="let status of StatusData" [selected]="+status.value == record.status" value="status.value"> {{status.display}} </option>
+              </select>
+            </td>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
