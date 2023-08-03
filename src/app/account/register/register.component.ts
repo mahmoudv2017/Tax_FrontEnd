@@ -16,13 +16,14 @@ export class RegisterComponent   {
     this.form = fb.group({
       "displayName": ["" , Validators.required],
       "username": ["" , Validators.required],
-      "password": ["" , Validators.required],
+      "password": ["" , [Validators.required ,  Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{6,}$/)]],
       "confirmpassword": ["" , Validators.required],
 
       "ssn": ["" , [Validators.required , Validators.minLength(14) , Validators.maxLength(14)]],
       "email": ["" , [Validators.required , Validators.email] , [CustomValidators.CheckEmailAsync(accoutnService.CheckEmailAsync.bind(this))] ],
       "city":["" , Validators.required],
-      "phoneNumber":["" , Validators.required],
+      "phoneNumber":["" , [Validators.required , Validators.pattern(/^01\d{9}$/g)]]
+,
       "state": ["" , Validators.required],
       "country": ["" , Validators.required],
       "postalCode": ["" , Validators.required]
@@ -34,6 +35,7 @@ export class RegisterComponent   {
 
 
   onSubmit(){
+
     delete this.form.value["confirmpassword"]
 
     this.accoutnService.RegisterUser(this.form.value)

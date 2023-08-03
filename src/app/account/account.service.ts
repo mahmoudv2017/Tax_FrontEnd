@@ -37,12 +37,18 @@ export class AccountService {
   RegisterUser(registerForm:any){
       registerForm["role"] = "TaxPayer"
 
-     this.http.post<User>(this.baseApi+"/register" , registerForm).subscribe(user => {
-      this.CurrentUserSource$.next(user)
+     this.http.post<User>(this.baseApi+"/register" , registerForm).subscribe({
+      next : user => {
+        this.CurrentUserSource$.next(user)
 
-      localStorage.setItem("token" , user.token)
-      this.router.navigate(["/"])
-    })
+        localStorage.setItem("token" , user.token)
+        this.router.navigate(["/"])
+      },
+      error : (err) => {
+        console.log(err)
+        Swal.fire("Error" , "Social Security Number and Username must be unqiue" , "error")
+      }
+     })
   }
 
   CheckEmailAsync(email:string) : Observable<ValidationErrors | null>{

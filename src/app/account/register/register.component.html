@@ -30,16 +30,17 @@
 
   <div class="form-group input-group">
 		<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		    <span class="input-group-text"> <img width="100%" src="assets/images/id-card.png" alt="">  </span>
 		 </div>
         <input
         [class.isInValid]="form.get('ssn')!.errors && form.get('ssn')!.touched"
 
          class="form-control" formControlName="ssn" placeholder="Socail Security Number" type="text">
 
-         <p *ngIf="form.get('ssn')!.errors && form.get('ssn')!.touched" class="text-danger" >Please Enter a valid Email </p>
 
   </div> <!-- form-group// -->
+  <p *ngIf="form.get('ssn')!.errors && form.get('ssn')!.touched" class="text-danger" >Please Enter a valid SSN </p>
+
   <div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -48,9 +49,10 @@
         [class.isInValid]="form.get('username')!.errors && form.get('username')!.touched"
         name="username" formControlName="username" class="form-control" placeholder="username" type="text">
 
-        <p *ngIf="form.get('username')!.errors && form.get('username')!.touched" class="text-danger" >Please Enter a valid Email </p>
 
   </div> <!-- form-group// -->
+  <p *ngIf="form.get('username')!.errors && form.get('username')!.touched" class="text-danger" >Please Enter a valid username </p>
+
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
@@ -59,9 +61,21 @@
         [class.isInValid]="form.get('email')!.errors && form.get('email')!.touched"
          class="form-control" formControlName="email" placeholder="Email address" type="email">
 
-         <p *ngIf="form.get('email')!.errors && form.get('email')!.touched" class="text-danger" >Please Enter a valid Email </p>
+          <br>
 
-    </div> <!-- form-group// -->
+
+    </div>
+    <p *ngIf="form.get('email')!.errors && form.get('email')!.touched" class="text-danger" >
+      <ng-container *ngIf="form.get('email')!.errors!['EmailExists'] else elsecondition" >
+        This Email is ALready Registered
+      </ng-container>
+
+      <ng-template #elsecondition  >
+        Please Enter a Valid Email
+      </ng-template>
+     </p>
+
+
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
@@ -72,52 +86,53 @@
 
       formControlName="phoneNumber" class="form-control" placeholder="Phone number" type="text">
 
-      <p *ngIf="form.get('phoneNumber')!.errors && form.get('phoneNumber')!.touched" class="text-danger" >Please Enter a valid Email </p>
+
 
     </div>
+
+    <p *ngIf="form.get('phoneNumber')!.errors && form.get('phoneNumber')!.touched" class="text-danger" >Please Enter a Phone Number </p>
     <div class="form-group input-group">
       <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+          <span class="input-group-text"> <i class="fa fa-building"></i></span>
        </div>
           <input
           [class.isInValid]="form.get('city')!.errors && form.get('city')!.touched"
           name="city"  formControlName="city" class="form-control" placeholder="City" type="text">
-          <p *ngIf="form.get('city')!.errors && form.get('city')!.touched" class="text-danger" >Please Enter a valid Email </p>
 
 
-          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+          <span class="input-group-text" style="display: inline;"> <img width="100%" src="assets/images/state.png" alt=""> </span>
            <input
            [class.isInValid]="form.get('state')!.errors && form.get('state')!.touched"
 
            formControlName="state" class="form-control" placeholder="state" type="text">
-           <p *ngIf="form.get('state')!.errors && form.get('state')!.touched" class="text-danger" >Please Enter a valid Email </p>
 
         </div>
+        <p *ngIf="form.get('state')!.errors && form.get('state')!.touched" class="text-danger" >Please Enter a State </p>
 
         <div class="form-group input-group">
           <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+              <span class="input-group-text"> <img width="100%" src="assets/images/country.png" alt=""> </span>
            </div>
               <input
               [class.isInValid]="form.get('country')!.errors && form.get('country')!.touched"
               formControlName="country" class="form-control" placeholder="country" type="text">
-              <p *ngIf="form.get('country')!.errors && form.get('country')!.touched" class="text-danger" >Please Enter a valid Email </p>
 
 
             </div>
+            <p *ngIf="form.get('country')!.errors && form.get('country')!.touched" class="text-danger" >Please Enter Your Country </p>
 
             <div class="form-group input-group">
               <div class="input-group-prepend">
-                  <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                  <span class="input-group-text"> <img width="100%" src="assets/images/mailbox.png" alt=""> </span>
                </div>
                   <input
                   [class.isInValid]="form.get('postalCode')!.errors && form.get('postalCode')!.touched"
-
                   formControlName="postalCode" class="form-control" placeholder="postalCode" type="text">
 
-                  <p *ngIf="form.get('postalCode')!.errors && form.get('postalCode')!.touched" class="text-danger" >Please Enter a valid Email </p>
 
                 </div>
+                <p *ngIf="form.get('postalCode')!.errors && form.get('postalCode')!.touched" class="text-danger" >Please Enter a postal code </p>
+
 
     <div class="form-group input-group">
     	<div class="input-group-prepend">
@@ -128,9 +143,10 @@
 
         formControlName="password" class="form-control" placeholder="Create password" type="password">
 
-        <p *ngIf="form.get('password')!.errors && form.get('password')!.touched" class="text-danger" >Please Enter a valid Email </p>
 
     </div> <!-- form-group// -->
+    <p *ngIf="form.get('password')!.errors && form.get('password')!.touched" class="text-danger" >Password must be 6 characters and containts one lower and one uppercase and one special character </p>
+
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
@@ -140,13 +156,19 @@
 
         formControlName="confirmpassword" class="form-control" placeholder="Repeat password" type="password">
 
-        <p *ngIf="form.get('confirmpassword')!.errors && form.get('confirmpassword')!.touched" class="text-danger" >Please Enter a valid Email </p>
 
     </div> <!-- form-group// -->
+    <p *ngIf="form.errors ||  form.get('confirmpassword')!.errors && form.get('confirmpassword')!.touched" class="text-danger" >
+      <ng-container *ngIf="form.errors!['passwordMismatch']" >
+        Passwords Must Match
+      </ng-container>
+
+    </p>
+
     <div class="form-group">
         <button [disabled]="form.invalid" type="submit" class="btn btn-primary btn-block"> Create Account  </button>
     </div> <!-- form-group// -->
-    <p class="text-center">Have an account? <a href="">Log In</a> </p>
+    <p class="text-center">Have an account? <a routerLink="/account/login"> Log In</a> </p>
 </form>
 </article>
 </div> <!-- card.// -->
