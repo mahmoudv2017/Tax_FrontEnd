@@ -9,10 +9,11 @@
       <th scope="col">Total Tax</th>
       <th scope="col">TaxWithheld</th>
       <th scope="col">Status</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
-    <tr style="cursor: pointer;" (click)="router.navigate(['/tax/taxdetails/'+record.id]) " *ngFor="let record of taxReturns">
+    <tr   *ngFor="let record of taxReturns">
       <td>{{record.id}}</td>
       <td>{{record.income | currency}}</td>
       <td>{{record.filingDate | date}}</td>
@@ -21,6 +22,7 @@
       <td>{{record.totalTax | currency}}</td>
       <td>{{record.taxWithheld | currency}}</td>
       <td [ngClass]="record.status == 0 ? 'alert alert-danger': 'alert alert-primary' " >{{record.status | statusPipe}}</td>
+      <td><button routerLink="/tax/taxdetails/{{record.id}}" class="btn btn-secondary">Check Record History</button></td>
 
     </tr>
 

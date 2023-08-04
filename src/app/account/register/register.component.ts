@@ -14,7 +14,7 @@ export class RegisterComponent   {
   constructor(fb:FormBuilder , private accoutnService:AccountService ,private http:HttpClient) {
 
     this.form = fb.group({
-      "displayName": ["" , [Validators.required , Validators.pattern(/^[a-zA-Z]+(\s?[a-zA-Z]+)+$/)]],
+      "displayName": ["" , [Validators.required , Validators.pattern(/^\s*[a-zA-Z]+(\s?[a-zA-Z]+)+\s*$/)]],
       "username": ["" , Validators.required],
       "password": ["" , [Validators.required ,  Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{6,}$/)]],
       "confirmpassword": ["" , Validators.required],
@@ -26,7 +26,7 @@ export class RegisterComponent   {
 ,
       "state": ["" , [Validators.required,   Validators.pattern(/^[a-zA-Z]+(\s?[a-zA-Z]+)+$/)]],
       "country": ["" , [Validators.required, Validators.pattern(/^[a-zA-Z-]+$/g)]],
-      "postalCode": ["" , Validators.required]
+      "postalCode": ["" , [Validators.required , Validators.pattern(/^\d{5}$/)]]
     },{
       updateOn:"blur",
       validators : [CustomValidators.CheckPassword]
