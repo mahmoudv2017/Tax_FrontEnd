@@ -20,7 +20,7 @@ export class TaxreturnsComponent implements OnInit {
    { value:"1" , display:"Approved"},
     {value:"2" , display:"Rejected"},
   ]
-  constructor(private adminService:AdminService , public router:Router) { }
+  constructor(private adminService:AdminService ) { }
   ngOnInit(): void {
 
    // this.ChangeStatus(1)
@@ -33,7 +33,7 @@ export class TaxreturnsComponent implements OnInit {
       },
       error : (err) => {
         console.log(err)
-        Swal.fire( "Error" , "No User With that Social Security Number Exists" , "error")
+        Swal.fire( "Error" , "No Tax Payer With that Social Security Number Exists" , "error")
       }
     }
 
