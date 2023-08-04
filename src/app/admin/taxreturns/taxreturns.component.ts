@@ -3,6 +3,7 @@ import { AllUserInfo } from 'src/app/shared/models/AllUserInfo';
 import { ActionStatus } from 'src/app/shared/models/TaxStatus';
 import { AdminService } from '../admin.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-taxreturns',
@@ -19,7 +20,7 @@ export class TaxreturnsComponent implements OnInit {
    { value:"1" , display:"Approved"},
     {value:"2" , display:"Rejected"},
   ]
-  constructor(private adminService:AdminService) { }
+  constructor(private adminService:AdminService , public router:Router) { }
   ngOnInit(): void {
 
    // this.ChangeStatus(1)
@@ -43,6 +44,12 @@ export class TaxreturnsComponent implements OnInit {
 
     debugger
     this.adminService.ChangeTaxReturnStatus(+taxReturnID , event.target.selectedIndex).subscribe(res => {
+      this.target_user.taxReturnDtoReponses =  this.target_user.taxReturnDtoReponses.map(taxreturn => {
+        if(taxreturn.id == taxReturnID){
+          taxreturn.status = event.target.selectedIndex
+        }
+        return taxreturn
+      } )
       console.log(res)
     })
   }

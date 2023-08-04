@@ -35,7 +35,7 @@ export class AccountService {
 
 
   RegisterUser(registerForm:any){
-      registerForm["role"] = "TaxPayer"
+    debugger
 
      this.http.post<User>(this.baseApi+"/register" , registerForm).subscribe({
       next : user => {

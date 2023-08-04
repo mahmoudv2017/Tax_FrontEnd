@@ -34,3 +34,7 @@
   background-color: #42AEEC;
   color: #fff;
 }
+
+.isInValid {
+  border-color: red;
+}

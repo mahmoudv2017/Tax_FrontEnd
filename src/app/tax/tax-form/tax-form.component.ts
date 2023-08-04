@@ -19,10 +19,10 @@ export class TaxFormComponent implements OnInit {
 
     this.form = fb.group({
         income: [0 , [Validators.required , Validators.min(1000)]],
-        adjustedGrossIncome: [0 , [Validators.required ]],
-        taxableIncome: [0 , [Validators.required ]],
-        totalTax: [0 , [Validators.required ]],
-        taxWithheld: [0 , [Validators.required ]],
+        adjustedGrossIncome: [0 , [Validators.required , Validators.min(10)]],
+        taxableIncome: [0 , [Validators.required , Validators.min(10)]],
+        totalTax: [0 , [Validators.required ,  Validators.min(10)]],
+        taxWithheld: [0 , [Validators.required ,  Validators.min(10)]],
         forMonth : [null]
     },{
       updateOn:"blur",

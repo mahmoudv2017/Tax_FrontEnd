@@ -1,6 +1,6 @@
 
-<input type="month" #monthInput  [max]="maxYearMonth" >
-<button (click)=" targetMonth(monthInput.value)" >Enter</button>
+<input  type="month" #monthInput  [max]="maxYearMonth" >
+<button style="margin-left: 2vw;" class="btn btn-primary" (click)=" targetMonth(monthInput.value)" >Enter</button>
 <p>{{statusMsg}}</p>
 
 <form [style.display]="hidden_flag ? 'none' : 'block'" [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -9,43 +9,43 @@
     <input
     [class.isInValid]="form.get('income')!.errors && form.get('income')!.touched"
     #input
-    type="text" formControlName="income" class="form-control" >
+    type="number" formControlName="income" class="form-control" >
 
     <p *ngIf="form.get('income')!.errors && form.get('income')!.touched" class="text-danger" >Please Enter a valid income tax </p>
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Adjusted Gross Income</label>
+    <label class="form-label">Adjusted Gross Income</label>
     <input
     [class.isInValid]="form.get('adjustedGrossIncome')!.errors && form.get('adjustedGrossIncome')!.touched"
-    type="text" formControlName="adjustedGrossIncome" class="form-control" >
-    <p *ngIf="form.get('adjustedGrossIncome')!.errors && form.get('adjustedGrossIncome')!.touched" class="text-danger" >Please Enter a valid adjustedGrossIncome tax </p>
+    type="number" formControlName="adjustedGrossIncome" class="form-control" >
+    <p *ngIf="form.get('adjustedGrossIncome')!.errors && form.get('adjustedGrossIncome')!.touched" class="text-danger" >Please Enter a valid Adjusted Gross Income tax </p>
 
   </div>
 
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">taxableIncome</label>
+    <label  class="form-label">Taxable Income</label>
     <input
     [class.isInValid]="form.get('taxableIncome')!.errors && form.get('taxableIncome')!.touched"
-    type="text" formControlName="taxableIncome" class="form-control" >
-    <p *ngIf="form.get('taxableIncome')!.errors && form.get('taxableIncome')!.touched" class="text-danger" >Please Enter a valid taxableIncome tax </p>
+    type="number" formControlName="taxableIncome" class="form-control" >
+    <p *ngIf="form.get('taxableIncome')!.errors && form.get('taxableIncome')!.touched" class="text-danger" >Please Enter a valid Taxable Income tax </p>
 
   </div>
 
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Total Tax</label>
+    <label  class="form-label">Total Tax</label>
     <input
     [class.isInValid]="form.get('totalTax')!.errors && form.get('totalTax')!.touched"
-    type="text" formControlName="totalTax" class="form-control" >
-    <p *ngIf="form.get('totalTax')!.errors && form.get('totalTax')!.touched" class="text-danger" >Please Enter a valid totalTax tax </p>
+    type="number" formControlName="totalTax" class="form-control" >
+    <p *ngIf="form.get('totalTax')!.errors && form.get('totalTax')!.touched" class="text-danger" >Please Enter a valid Total Tax  </p>
 
   </div>
 
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">TaxWithheld</label>
+    <label  class="form-label">TaxWithheld</label>
     <input
     [class.isInValid]="form.get('taxWithheld')!.errors && form.get('taxWithheld')!.touched"
-    type="text" formControlName="taxWithheld" class="form-control" >
-    <p *ngIf="form.get('taxWithheld')!.errors && form.get('taxWithheld')!.touched" class="text-danger" >Please Enter a valid taxWithheld tax </p>
+    type="number" formControlName="taxWithheld" class="form-control" >
+    <p *ngIf="form.get('taxWithheld')!.errors && form.get('taxWithheld')!.touched" class="text-danger" >Please Enter a valid Tax WithHeld </p>
 
   </div>
 

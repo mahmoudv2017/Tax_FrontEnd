@@ -1,29 +1,47 @@
 
 <div style="text-align: center;">
 
-  <input  class="form-control" placeholder="Social Security Number" type="text" #ssninput name="" style="margin-right: 2vw; display: inline-block; width: 200px;" >
+  <input (keydown.enter)="getUserData(ssninput.value)" class="form-control" placeholder="Social Security Number" type="text" #ssninput name="" style="margin-right: 2vw; display: inline-block; width: 200px;" >
   <button  (click)="getUserData(ssninput.value)" class="btn btn-secondary" >Search SSN</button>
 </div>
 <p>{{status_msg}}</p>
 <div *ngIf="target_user " class="container">
   <div class="row">
     <div class="col-lg-3">
-      <p>userID :</p>
-      <p>userName :</p>
-      <p>email :</p>
-      <p>phoneNumber :</p>
+      <p>User ID :</p>
+      <p>UserName :</p>
+      <p>Email :</p>
+      <p>PhoneNumber :</p>
+      <p>city :</p>
+      <p>country :</p>
+      <p>State : </p>
+
     </div>
-    <div class="col-lg-7">
+    <div class="col-lg-9">
       <p>{{target_user.userId}}</p>
       <p>{{target_user.userName}}</p>
       <p>{{target_user.email}}</p>
       <p>{{target_user.phoneNumber}}</p>
 
+      <p>{{target_user.address.city}} </p>
+      <p>{{target_user.address.state}}</p>
+      <p>{{target_user.address.country}}</p>
 
 
     </div>
 
-    <div class="col-lg-12" *ngIf="target_user.taxReturnDtoReponses.length > 0">
+    <div class="col-lg-3">
+
+
+    </div>
+    <div class="col-lg-9">
+
+
+
+
+    </div>
+
+    <div  class="col-lg-12" *ngIf="target_user.taxReturnDtoReponses.length > 0 ; else emptytempalte">
       <table class="table table-hover">
         <thead>
           <tr>
@@ -38,7 +56,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let record of target_user.taxReturnDtoReponses">
+          <tr style="cursor: pointer;" (click)="router.navigate(['/tax/taxdetails/'+record.id]) " *ngFor="let record of target_user.taxReturnDtoReponses">
             <td>{{record.id}}</td>
             <td>{{record.income | currency}}</td>
             <td>{{record.filingDate | date}}</td>
@@ -62,5 +80,12 @@
         </tbody>
       </table>
     </div>
+
+    <ng-template #emptytempalte>
+
+      <div class="container text-center">
+        <h1>This User Didn't Do Any Tax Returns</h1>
+      </div>
+    </ng-template>
   </div>
 </div>

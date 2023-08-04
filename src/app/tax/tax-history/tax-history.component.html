@@ -1,13 +1,13 @@
-<table class="table table-hover">
+<table *ngIf="taxReturns; else EmptyTemplate" class="table table-hover">
   <thead >
     <tr>
       <th scope="col">#</th>
       <th scope="col">income</th>
-      <th scope="col">filingDate</th>
-      <th scope="col">adjustedGrossIncome</th>
-      <th scope="col">taxableIncome</th>
-      <th scope="col">totalTax</th>
-      <th scope="col">taxWithheld</th>
+      <th scope="col">Filing Date</th>
+      <th scope="col">Adjusted Gross Income</th>
+      <th scope="col">Taxable Income</th>
+      <th scope="col">Total Tax</th>
+      <th scope="col">TaxWithheld</th>
       <th scope="col">Status</th>
     </tr>
   </thead>
@@ -26,3 +26,7 @@
 
   </tbody>
 </table>
+
+<ng-template #EmptyTemplate>
+  <h1 class="text-center">You Haven't filed any taxes yet</h1>
+</ng-template>

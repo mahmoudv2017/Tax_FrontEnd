@@ -1,3 +1,4 @@
+import { Address } from './Address';
 import { TaxReturn } from './TaxReturn';
 export interface AllUserInfo{
 
@@ -6,6 +7,6 @@ export interface AllUserInfo{
 
   email:string,
   phoneNumber:string,
-
+  address:Address
   taxReturnDtoReponses:TaxReturn[]
 }

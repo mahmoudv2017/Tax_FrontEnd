@@ -14,6 +14,11 @@
         <span class="bg-light">OR</span>
     </p>
 	<form [formGroup]="form" (ngSubmit)="onSubmit()" >
+    <span>Role : </span>
+  <select formControlName="role" >
+    <option value="TaxPayer" >TaxPayer</option>
+    <option value="Admin" >Admin</option>
+  </select>
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -21,11 +26,11 @@
         <input
         [class.isInValid]="form.get('displayName')!.errors && form.get('displayName')!.touched"
 
-        class="form-control" formControlName="displayName" placeholder="Full name" type="text">
+        class="form-control" formControlName="displayName" placeholder="Full Name" type="text">
 
-        <p *ngIf="form.get('displayName')!.errors && form.get('displayName')!.touched" class="text-danger" >Please Enter a valid Email </p>
 
   </div> <!-- form-group// -->
+  <p *ngIf="form.get('displayName')!.errors && form.get('displayName')!.touched" class="text-danger" >Please Enter a valid Name </p>
 
 
   <div class="form-group input-group">
@@ -35,7 +40,7 @@
         <input
         [class.isInValid]="form.get('ssn')!.errors && form.get('ssn')!.touched"
 
-         class="form-control" formControlName="ssn" placeholder="Socail Security Number" type="text">
+         class="form-control" formControlName="ssn" placeholder="Social Security Number" type="text">
 
 
   </div> <!-- form-group// -->
@@ -47,7 +52,7 @@
 		 </div>
         <input
         [class.isInValid]="form.get('username')!.errors && form.get('username')!.touched"
-        name="username" formControlName="username" class="form-control" placeholder="username" type="text">
+        name="username" formControlName="username" class="form-control" placeholder="Username" type="text">
 
 
   </div> <!-- form-group// -->
@@ -59,7 +64,7 @@
 		 </div>
         <input
         [class.isInValid]="form.get('email')!.errors && form.get('email')!.touched"
-         class="form-control" formControlName="email" placeholder="Email address" type="email">
+         class="form-control" formControlName="email" placeholder="Email Address" type="email">
 
           <br>
 
@@ -84,7 +89,7 @@
     	<input
       [class.isInValid]="form.get('phoneNumber')!.errors && form.get('phoneNumber')!.touched"
 
-      formControlName="phoneNumber" class="form-control" placeholder="Phone number" type="text">
+      formControlName="phoneNumber" class="form-control" placeholder="Phone Number" type="text">
 
 
 
@@ -99,14 +104,18 @@
           [class.isInValid]="form.get('city')!.errors && form.get('city')!.touched"
           name="city"  formControlName="city" class="form-control" placeholder="City" type="text">
 
+          <br>
+
 
           <span class="input-group-text" style="display: inline;"> <img width="100%" src="assets/images/state.png" alt=""> </span>
            <input
            [class.isInValid]="form.get('state')!.errors && form.get('state')!.touched"
 
-           formControlName="state" class="form-control" placeholder="state" type="text">
+           formControlName="state" class="form-control" placeholder="State" type="text">
 
         </div>
+        <p *ngIf="form.get('city')!.errors && form.get('city')!.touched" class="text-danger" >Please Enter a City </p>
+
         <p *ngIf="form.get('state')!.errors && form.get('state')!.touched" class="text-danger" >Please Enter a State </p>
 
         <div class="form-group input-group">
@@ -127,7 +136,7 @@
                </div>
                   <input
                   [class.isInValid]="form.get('postalCode')!.errors && form.get('postalCode')!.touched"
-                  formControlName="postalCode" class="form-control" placeholder="postalCode" type="text">
+                  formControlName="postalCode" class="form-control" placeholder="postal Code" type="text">
 
 
                 </div>
